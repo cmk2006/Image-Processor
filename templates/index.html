@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/main.css">
+    <script src="../static/htmx.min.js" defer></script>
+    <script src="../static/imageloader.js" defer></script>
+    <script src="../static/slider.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>IMAGE SHARPENER</h1>
+    </header>
+    <main>
+        <form id="imageForm"  hx-post="/upload" method="POST" enctype="multipart/form-data" hx-trigger="submit" hx-target="#previewImg" hx-swap="innerHTML">
+            <label for="img" id="fileButton">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*" onchange="updateFileName(this)">
+            <span id="fileName"></span>
+            <button type="submit" class="button">Upload Image</button>
+        </form>
+        
+        <div id="sliderContainer">
+            <input id="imgSize" type="range"  name="size" min="1" max="10" value="10" step="1" class="slider">
+            <p class="rdisplay" id="Sizedisplay"></p>
+        </div>
+        
+        <div id="ImageBefore">
+            <h2>Original</h2>
+            <img src="" alt="" id="ImagePreview">
+        </div>
+
+        <div id="ImageAfter">
+            <h2>Sharpened</h2>
+            <img id="previewImg" src="" alt="">
+        </div>
+    </main>
+</body>
+</html>
